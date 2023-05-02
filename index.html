@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Assignment 2</title>
+	<link rel="stylesheet" type="text/css" href="index.css">
+	<script>
+		function userSearch() {
+			const firstName = document.getElementById('firstName').value;
+
+			//create an AJAX request to the server to search for the user's given name
+			const xmlreq = new XMLHttpRequest();
+			xmlreq.open('GET', `/search?firstName=${firstName}`, true);
+			xmlreq.onload = function() {
+				if (this.status == 200) {
+					const users = JSON.parse(this.responseText);
+					displayUsers(users);
+				}
+			};
+			xmlreq.send();
+		}
+
+
+	</script>
+</head>
+<body>
+	<h1>User Search</h1>
+	<input type="text" id="firstName" placeholder="First Name">
+	<button onclick="userSearch()">Search</button>
+	<div id="results"></div>
+</body>
+</html>
