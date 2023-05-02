@@ -1,5 +1,43 @@
-h1 {
+body, h2, section, button, input {
 	display: flex;
 	justify-content: center;
-	font-family: Roboto;
+	align-items: center;
+	flex-wrap: wrap;
+	font-family: Arial;
+}
+
+h2 {
+	width: 100%;	
+	text-align: center;
+}
+
+section {
+	width: 30%;
+	padding: 10px;
+}
+
+button {
+	width: 90%;
+	margin: 10px;
+	padding: 10px;
+	background-color: #5A5ADB;
+	border: 0px;
+	border-radius: 10px;
+	font-weight: bold;
+}
+
+button:hover {
+	background-color: #00AA2A;
+}
+
+#deleteUser:hover {
+	background-color: #FF002A;
+}
+
+#updateUserIDNo {
+	width: 80%;
+}
+
+#createUserFName, #createUserLName, #updateUserField, #updateUserFieldData {
+	width: 40%;
 }

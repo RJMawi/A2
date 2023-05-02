@@ -2,9 +2,14 @@ var express = require('express');
 var application = express();
 var fs = require("fs");
 var bParser = require("body-parser");
-var users = require("./users.json");
+
+application.use(express.static(__dirname));
+
 //var userdata = JSON.parse(data).users;
+var users = require("./users.json");
 application.use(bParser.json());
+
+
 
 function getUserName (user) {
 	//console.log(user["username"])
@@ -91,6 +96,15 @@ application.delete('/user/:userID', function (req, res) {
 		res.end();
 	});
 })
+//FIND SPECIFIC USER
+application.get('/search', function (req, res) {
+	let userName = req.params.firstName;
+	fs.readFile(__dirname + "/" + "users.json", 'utf8', function (err, data) {
+		const foundUsers = users.filter(u => u.firstName.toLowerCase() == firstName.toLowerCase());
+		console.log(foundUsers);
+		res.json(foundUsers);
+	})
+});
 
 
 
